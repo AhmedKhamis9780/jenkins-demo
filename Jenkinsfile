@@ -1,10 +1,7 @@
 pipeline {
      agent any
     parameters {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'CREDENTIALS', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
-                        {
-                            sh 'ant -Ddb.clean=${params.cleanDB} -Ddb.host=${params.host} -Ddb.userid=$USERNAME -Ddb.password=$PASSWORD'
-                        }
+       
         booleanParam(name:'project', defaultValue: true, description:'this paramater help you to know project name')
         choice(name: 'namespace', choices:['dev','prod','stage'], description: '' ) 
     }
